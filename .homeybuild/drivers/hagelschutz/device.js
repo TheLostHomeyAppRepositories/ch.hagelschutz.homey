@@ -50,6 +50,13 @@ class HagelschutzDevice extends Homey.Device {
       await this.addCapability('hail_state').catch(this.error.bind(this));
     }
 
+    // Migrate: ensure poll_interval has a valid value on existing devices
+    const pollSetting = this.getSetting('poll_interval');
+    if (typeof pollSetting !== 'number' || pollSetting < 120) {
+      await this.setSettings({ poll_interval: 120 }).catch(this.error.bind(this));
+      this.log('poll_interval corrected to 120s');
+    }
+
     // Start polling immediately then every 120 s (required by API spec)
     await this._startPolling();
   }
@@ -59,15 +66,19 @@ class HagelschutzDevice extends Homey.Device {
   // ─────────────────────────────────────────────────────────────────
 
   async _startPolling() {
+    const raw = this.getSetting('poll_interval');
+    const intervalSec = (typeof raw === 'number' && raw >= 120) ? raw : 120;
+    const intervalMs  = intervalSec * 1000;
+
     // Initial poll right away
     await this.pollApi();
 
-    // Recurring poll – fixed at 120 s as mandated by the API specification
+    // Recurring poll
     this._pollTimer = this.homey.setInterval(async () => {
       await this.pollApi();
-    }, REQUIRED_POLL_INTERVAL_MS);
+    }, intervalMs);
 
-    this.log(`Polling started (interval: ${REQUIRED_POLL_INTERVAL_MS / 1000}s as required by API)`);
+    this.log(`Polling started (interval: ${intervalSec}s)`);
   }
 
   _stopPolling() {
@@ -286,7 +297,8 @@ class HagelschutzDevice extends Homey.Device {
 
     if (
       changedKeys.includes('device_id') ||
-      changedKeys.includes('hwtype_id')
+      changedKeys.includes('hwtype_id') ||
+      changedKeys.includes('poll_interval')
     ) {
       this._stopPolling();
       this._lastState = null;
