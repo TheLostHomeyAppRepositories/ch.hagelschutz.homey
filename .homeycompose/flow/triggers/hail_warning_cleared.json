@@ -6,9 +6,9 @@
     "fr": "Alerte grêle levée"
   },
   "titleFormatted": {
-    "en": "Hail warning cleared on [[device]]",
-    "de": "Hagelwarnung aufgehoben auf [[device]]",
-    "fr": "Alerte grêle levée sur [[device]]"
+    "en": "Hail warning cleared",
+    "de": "Hagelwarnung aufgehoben",
+    "fr": "Alerte grêle levée"
   },
   "hint": {
     "en": "Triggered when a hail warning is no longer active (currentState returns to 0).",

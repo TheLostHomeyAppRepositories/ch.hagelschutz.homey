@@ -6,9 +6,9 @@
     "fr": "Connexion API rétablie"
   },
   "titleFormatted": {
-    "en": "API connection recovered on [[device]]",
-    "de": "API-Verbindung wiederhergestellt auf [[device]]",
-    "fr": "Connexion API rétablie sur [[device]]"
+    "en": "API connection recovered",
+    "de": "API-Verbindung wiederhergestellt",
+    "fr": "Connexion API rétablie"
   },
   "hint": {
     "en": "Triggered when the API responds successfully again after an error.",

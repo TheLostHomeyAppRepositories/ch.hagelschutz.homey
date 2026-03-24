@@ -1,17 +1,17 @@
-Automatischer Schutz für Ihre Storen – bevor der Hagel kommt.
-Diese App verbindet Ihren Homey mit dem Hagelwarnsystem von hagelschutz-einfach-automatisch.ch und schützt Ihre Storen zuverlässig vor Hagelschäden. Sobald eine Warnung aktiv wird, reagiert Homey automatisch – etwa durch Hochfahren der Storen oder das Senden einer Benachrichtigung.
+Automatic protection for your blinds – before the hail arrives.
+This app connects your Homey to the hail warning system at hagelschutz-einfach-automatisch.ch and reliably protects your blinds from hail damage. As soon as a warning becomes active, Homey responds automatically – for example by raising the blinds or sending a notification.
 
-Funktionen
-* Automatische Hagelwarnung via Homey-Flow
-* Erkennung von Warnung, Testalarm und Entwarnung
-* Überwachung der API-Verbindung mit Alarm bei Ausfall
-* Konfigurierbares Abfrageintervall (Standard: 120 Sekunden)
-* Vollständig auf Deutsch, Englisch und Französisch verfügbar
+Features
+* Automatic hail warning via Homey Flow
+* Detection of warning, test alarm and all-clear
+* API connection monitoring with alert on failure
+* Configurable polling interval (default: 120 seconds)
+* Fully available in German, English and French
 
-Voraussetzungen
-* Homey (Pro) mit Internetzugang
-* Registrierung auf hagelschutz-einfach-automatisch.ch
-* Gültige Seriennummer (deviceId) und Hardware-Typ-ID (hwtypeId)
+Requirements
+* Homey (Pro) with internet access
+* Registration at hagelschutz-einfach-automatisch.ch
+* Valid serial number (deviceId) and hardware type ID (hwtypeId)
 
-Ideal für
-Hauseigentümer, Immobilienverwaltungen, Architekten und Elektriker in der Schweiz, die moderne Gebäudesteuerung mit automatischem Hagelschutz kombinieren möchten.
+Ideal for
+Homeowners, property managers, architects and electricians in Switzerland who want to combine modern building automation with automatic hail protection.

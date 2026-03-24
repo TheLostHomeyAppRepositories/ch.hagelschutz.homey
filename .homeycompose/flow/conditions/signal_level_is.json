@@ -8,7 +8,7 @@
   "titleFormatted": {
     "en": "currentState !{{is|is not}} [[level]]",
     "de": "currentState !{{ist|ist nicht}} [[level]]",
-    "fr": "currentState !{{is|is not}} [[level]]"
+    "fr": "currentState !{{est|n'est pas}} [[level]]"
   },
   "args": [
     {

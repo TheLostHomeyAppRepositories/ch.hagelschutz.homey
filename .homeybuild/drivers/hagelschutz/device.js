@@ -49,6 +49,9 @@ class HagelschutzDevice extends Homey.Device {
     if (!this.hasCapability('hail_state')) {
       await this.addCapability('hail_state').catch(this.error.bind(this));
     }
+    if (!this.hasCapability('last_poll')) {
+      await this.addCapability('last_poll').catch(this.error.bind(this));
+    }
 
     // Migrate: ensure poll_interval has a valid value on existing devices
     const pollSetting = this.getSetting('poll_interval');
@@ -187,6 +190,18 @@ class HagelschutzDevice extends Homey.Device {
     // Clear connectivity alarm on successful response
     await this._clearApiError();
 
+    // Update last poll timestamp in short format using Homey's timezone
+    const now = new Date();
+    const tz = this.homey.clock.getTimezone();
+    const timestamp = now.toLocaleString('de-CH', {
+      timeZone: tz,
+      day: '2-digit',
+      month: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    await this.setCapabilityValue('last_poll', timestamp).catch(this.error.bind(this));
+
     // API returns { currentState: 0 | 1 | 2 }
     // 0 = no hail  |  1 = hail  |  2 = hail (test alarm)
     // Per spec: treat 0 as safe, any non-zero as hail
@@ -208,7 +223,7 @@ class HagelschutzDevice extends Homey.Device {
     this._lastState = currentState;
 
     // Always fire "signal changed"
-    await this.homey.app._triggerSignalChanged
+    await this.driver._triggerSignalChanged
       .trigger(this, { signal: currentState })
       .catch(this.error.bind(this));
 
@@ -217,7 +232,7 @@ class HagelschutzDevice extends Homey.Device {
       const description = this._stateDescription(currentState);
       this.log('🌨 Hail warning ACTIVE – triggering Flow');
 
-      await this.homey.app._triggerHailWarningActive
+      await this.driver._triggerHailWarningActive
         .trigger(this, { signal: currentState, description })
         .catch(this.error.bind(this));
 
@@ -230,7 +245,7 @@ class HagelschutzDevice extends Homey.Device {
     if (!isHail && previousState !== null && previousState !== 0) {
       this.log('✅ Hail warning CLEARED – triggering Flow');
 
-      await this.homey.app._triggerHailWarningCleared
+      await this.driver._triggerHailWarningCleared
         .trigger(this)
         .catch(this.error.bind(this));
 
@@ -253,7 +268,7 @@ class HagelschutzDevice extends Homey.Device {
     this._lastApiError = true;
 
     this.log('🔴 API error – triggering Flow');
-    await this.homey.app._triggerApiError
+    await this.driver._triggerApiError
       .trigger(this, { error: message })
       .catch(this.error.bind(this));
 
@@ -270,7 +285,7 @@ class HagelschutzDevice extends Homey.Device {
     this._lastApiError = false;
 
     this.log('🟢 API recovered – triggering Flow');
-    await this.homey.app._triggerApiRecovered
+    await this.driver._triggerApiRecovered
       .trigger(this)
       .catch(this.error.bind(this));
 

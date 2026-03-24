@@ -6,9 +6,9 @@
     "fr": "Connexion API !{{a échoué|fonctionne}}"
   },
   "titleFormatted": {
-    "en": "API connection !{{has failed|is working}} on [[device]]",
-    "de": "API-Verbindung !{{ist fehlgeschlagen|funktioniert}} auf [[device]]",
-    "fr": "Connexion API !{{a échoué|fonctionne}} sur [[device]]"
+    "en": "API connection !{{has failed|is working}}",
+    "de": "API-Verbindung !{{ist fehlgeschlagen|funktioniert}}",
+    "fr": "Connexion API !{{a échoué|fonctionne}}"
   },
   "args": [
     {

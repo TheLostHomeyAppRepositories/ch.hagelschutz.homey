@@ -8,7 +8,8 @@
   "capabilities": [
     "alarm_generic",
     "api_error_state",
-    "hail_state"
+    "hail_state",
+    "last_poll"
   ],
   "capabilitiesOptions": {
     "alarm_generic": {

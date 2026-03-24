@@ -14,9 +14,10 @@
     "storen",
     "hagelschutz"
   ],
-  "author": "Homey User",
+  "author": "Andi",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "homey": "^3.0.0"
   }
 }

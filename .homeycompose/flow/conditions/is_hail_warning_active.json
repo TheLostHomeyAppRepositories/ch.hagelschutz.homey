@@ -6,9 +6,9 @@
     "fr": "Alerte grêle !{{est|n'est pas}} active"
   },
   "titleFormatted": {
-    "en": "Hail warning !{{is|is not}} active on [[device]]",
-    "de": "Hagelwarnung !{{ist|ist nicht}} aktiv auf [[device]]",
-    "fr": "Alerte grêle !{{est|n'est pas}} active sur [[device]]"
+    "en": "Hail warning !{{is|is not}} active",
+    "de": "Hagelwarnung !{{ist|ist nicht}} aktiv",
+    "fr": "Alerte grêle !{{est|n'est pas}} active"
   },
   "args": [
     {

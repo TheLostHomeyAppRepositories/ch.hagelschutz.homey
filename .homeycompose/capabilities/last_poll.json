@@ -1,0 +1,19 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Last API poll",
+    "de": "Letzte API-Abfrage",
+    "fr": "Dernière interrogation API"
+  },
+  "desc": {
+    "en": "Date and time of the last successful API call.",
+    "de": "Datum und Uhrzeit der letzten API-Abfrage.",
+    "fr": "Date et heure de la dernière interrogation API."
+  },
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "getable": true,
+  "setable": false,
+  "insights": false,
+  "icon": "/drivers/hagelschutz/assets/icons/last_poll.svg"
+}

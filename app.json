@@ -1,14 +1,14 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "ch.hagelschutz.homey",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#1b5e8c",
   "name": {
-    "en": "Hail Protection – for Swiss Households",
-    "de": "Hagelschutz – für Schweizer Haushalte",
-    "fr": "Protection contre la grêle – pour les ménages suisses"
+    "en": "Hail Protection Switzerland",
+    "de": "Hagelschutz Schweiz",
+    "fr": "Protection Grêle Suisse"
   },
   "description": {
     "en": "Hail protection for your blinds – automatic warning via REST API",
@@ -28,6 +28,10 @@
     "name": "Andi",
     "email": "andi@wirzfamily.ch"
   },
+  "source": "https://github.com/andiwirz/ch.hagelschutz.homey",
+  "bugs": {
+    "url": "https://github.com/andiwirz/ch.hagelschutz.homey/issues"
+  },
   "flow": {
     "triggers": [
       {
@@ -38,22 +42,15 @@
           "fr": "Connexion API échouée"
         },
         "titleFormatted": {
-          "en": "API connection failed on [[device]]",
-          "de": "API-Verbindung fehlgeschlagen auf [[device]]",
-          "fr": "Connexion API échouée sur [[device]]"
+          "en": "API connection failed",
+          "de": "API-Verbindung fehlgeschlagen",
+          "fr": "Connexion API échouée"
         },
         "hint": {
           "en": "Triggered when the API returns a non-200 status or times out.",
           "de": "Wird ausgelöst, wenn die API keinen HTTP 200 zurückgibt oder zeitüberschreitet.",
           "fr": "Déclenché quand l'API retourne un statut non-200 ou expire."
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=hagelschutz"
-          }
-        ],
         "tokens": [
           {
             "name": "error",
@@ -65,6 +62,13 @@
             },
             "example": "HTTP 503: Service Unavailable"
           }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=hagelschutz"
+          }
         ]
       },
       {
@@ -75,9 +79,9 @@
           "fr": "Connexion API rétablie"
         },
         "titleFormatted": {
-          "en": "API connection recovered on [[device]]",
-          "de": "API-Verbindung wiederhergestellt auf [[device]]",
-          "fr": "Connexion API rétablie sur [[device]]"
+          "en": "API connection recovered",
+          "de": "API-Verbindung wiederhergestellt",
+          "fr": "Connexion API rétablie"
         },
         "hint": {
           "en": "Triggered when the API responds successfully again after an error.",
@@ -100,22 +104,15 @@
           "fr": "Alerte grêle active"
         },
         "titleFormatted": {
-          "en": "Hail warning is active on [[device]]",
-          "de": "Hagelwarnung ist aktiv auf [[device]]",
-          "fr": "Alerte grêle active sur [[device]]"
+          "en": "Hail warning is active",
+          "de": "Hagelwarnung ist aktiv",
+          "fr": "Alerte grêle active"
         },
         "hint": {
           "en": "Triggered when a hail warning becomes active (currentState changes from 0 to 1 or 2).",
           "de": "Wird ausgelöst, wenn eine Hagelwarnung aktiv wird (currentState wechselt von 0 auf 1 oder 2).",
           "fr": "Déclenché quand une alerte grêle devient active (currentState passe de 0 à 1 ou 2)."
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=hagelschutz"
-          }
-        ],
         "tokens": [
           {
             "name": "signal",
@@ -137,6 +134,13 @@
             },
             "example": "Hail warning active"
           }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=hagelschutz"
+          }
         ]
       },
       {
@@ -147,9 +151,9 @@
           "fr": "Alerte grêle levée"
         },
         "titleFormatted": {
-          "en": "Hail warning cleared on [[device]]",
-          "de": "Hagelwarnung aufgehoben auf [[device]]",
-          "fr": "Alerte grêle levée sur [[device]]"
+          "en": "Hail warning cleared",
+          "de": "Hagelwarnung aufgehoben",
+          "fr": "Alerte grêle levée"
         },
         "hint": {
           "en": "Triggered when a hail warning is no longer active (currentState returns to 0).",
@@ -172,22 +176,15 @@
           "fr": "Valeur du signal modifiée"
         },
         "titleFormatted": {
-          "en": "Signal value changed on [[device]]",
-          "de": "Signalwert hat sich geändert auf [[device]]",
-          "fr": "Valeur du signal modifiée sur [[device]]"
+          "en": "Signal value changed",
+          "de": "Signalwert hat sich geändert",
+          "fr": "Valeur du signal modifiée"
         },
         "hint": {
           "en": "Triggered on every change of currentState.",
           "de": "Wird bei jeder Änderung von currentState ausgelöst.",
           "fr": "Déclenché à chaque modification de currentState."
         },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=hagelschutz"
-          }
-        ],
         "tokens": [
           {
             "name": "signal",
@@ -198,6 +195,13 @@
               "fr": "Nouveau currentState"
             },
             "example": 1
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=hagelschutz"
           }
         ]
       }
@@ -211,9 +215,9 @@
           "fr": "Connexion API !{{a échoué|fonctionne}}"
         },
         "titleFormatted": {
-          "en": "API connection !{{has failed|is working}} on [[device]]",
-          "de": "API-Verbindung !{{ist fehlgeschlagen|funktioniert}} auf [[device]]",
-          "fr": "Connexion API !{{a échoué|fonctionne}} sur [[device]]"
+          "en": "API connection !{{has failed|is working}}",
+          "de": "API-Verbindung !{{ist fehlgeschlagen|funktioniert}}",
+          "fr": "Connexion API !{{a échoué|fonctionne}}"
         },
         "args": [
           {
@@ -231,9 +235,9 @@
           "fr": "Alerte grêle !{{est|n'est pas}} active"
         },
         "titleFormatted": {
-          "en": "Hail warning !{{is|is not}} active on [[device]]",
-          "de": "Hagelwarnung !{{ist|ist nicht}} aktiv auf [[device]]",
-          "fr": "Alerte grêle !{{est|n'est pas}} active sur [[device]]"
+          "en": "Hail warning !{{is|is not}} active",
+          "de": "Hagelwarnung !{{ist|ist nicht}} aktiv",
+          "fr": "Alerte grêle !{{est|n'est pas}} active"
         },
         "args": [
           {
@@ -253,7 +257,7 @@
         "titleFormatted": {
           "en": "currentState !{{is|is not}} [[level]]",
           "de": "currentState !{{ist|ist nicht}} [[level]]",
-          "fr": "currentState !{{is|is not}} [[level]]"
+          "fr": "currentState !{{est|n'est pas}} [[level]]"
         },
         "args": [
           {
@@ -285,9 +289,9 @@
           "fr": "Vérifier le statut grêle maintenant"
         },
         "titleFormatted": {
-          "en": "Check hail status now on [[device]]",
-          "de": "Hagelstatus jetzt prüfen auf [[device]]",
-          "fr": "Vérifier le statut grêle maintenant sur [[device]]"
+          "en": "Check hail status now",
+          "de": "Hagelstatus jetzt prüfen",
+          "fr": "Vérifier le statut grêle maintenant"
         },
         "hint": {
           "en": "Immediately triggers an API poll without waiting for the next 120-second interval.",
@@ -315,7 +319,8 @@
       "capabilities": [
         "alarm_generic",
         "api_error_state",
-        "hail_state"
+        "hail_state",
+        "last_poll"
       ],
       "capabilitiesOptions": {
         "alarm_generic": {
@@ -457,6 +462,25 @@
       "setable": false,
       "insights": true,
       "icon": "/drivers/hagelschutz/assets/icons/hail_state.svg"
+    },
+    "last_poll": {
+      "type": "string",
+      "title": {
+        "en": "Last API poll",
+        "de": "Letzte API-Abfrage",
+        "fr": "Dernière interrogation API"
+      },
+      "desc": {
+        "en": "Date and time of the last successful API call.",
+        "de": "Datum und Uhrzeit der letzten API-Abfrage.",
+        "fr": "Date et heure de la dernière interrogation API."
+      },
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "icon": "/drivers/hagelschutz/assets/icons/last_poll.svg"
     }
   }
 }

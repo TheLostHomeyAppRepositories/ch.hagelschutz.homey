@@ -6,9 +6,9 @@
     "fr": "Vérifier le statut grêle maintenant"
   },
   "titleFormatted": {
-    "en": "Check hail status now on [[device]]",
-    "de": "Hagelstatus jetzt prüfen auf [[device]]",
-    "fr": "Vérifier le statut grêle maintenant sur [[device]]"
+    "en": "Check hail status now",
+    "de": "Hagelstatus jetzt prüfen",
+    "fr": "Vérifier le statut grêle maintenant"
   },
   "hint": {
     "en": "Immediately triggers an API poll without waiting for the next 120-second interval.",
