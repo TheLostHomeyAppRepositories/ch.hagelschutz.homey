@@ -4,5 +4,8 @@
   },
   "1.0.2": {
     "en": "fixed app name, descriptions and flows"
+  },
+  "1.0.3": {
+    "en": "Added poll watchdog (triggers Flow if no successful API call for 10+ minutes) and improved device pairing with a custom setup page"
   }
 }
